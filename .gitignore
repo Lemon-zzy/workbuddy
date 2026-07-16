@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Node / Vue
+node_modules/
+dist/
+.vite/
+*.local
+.npm/
+
+# 数据库
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# 内容数据（按需生成，不入库）
+content/
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+logs/
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+.cache/
+.trae_permission_check_*
+
+# 构建产物
+build/
+out/

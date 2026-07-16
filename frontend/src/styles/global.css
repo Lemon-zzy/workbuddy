@@ -1,0 +1,161 @@
+/* 全局样式 - Nature / IEEE 学术期刊风
+   设计原则：
+   - 纯白底 + 浅灰分区
+   - 唯一强调色：学术深蓝
+   - 衬线标题 + 无衬线正文
+   - 1px 细线分隔
+   - 严格留白与栏宽
+   - 无渐变、无阴影、无动画
+*/
+:root {
+  /* 学术深蓝 - 唯一强调色 */
+  --accent: #003E7E;       /* Nature 蓝 */
+  --accent-2: #00629B;     /* IEEE 蓝 */
+  --accent-light: #E8EFF7; /* 浅蓝背景 */
+
+  /* 中性色 - 严格分级 */
+  --ink-1: #111111;        /* 标题 */
+  --ink-2: #2E2E2E;        /* 段落 */
+  --ink-3: #555555;        /* 副文本 */
+  --ink-4: #888888;        /* 元数据 */
+  --ink-5: #B5B5B5;        /* 辅助 */
+
+  --paper: #FFFFFF;        /* 主背景 */
+  --paper-2: #F7F7F5;      /* 分区背景 */
+  --paper-3: #EDECE8;      /* 三级背景 */
+
+  --rule: #1A1A1A;         /* 主分隔线 - 用深色做"硬"分隔 */
+  --rule-soft: #D9D9D6;    /* 软分隔线 */
+  --rule-mid: #4A4A4A;     /* 中等分隔线 */
+
+  /* 字体 */
+  --font-serif: 'Source Serif Pro', 'Source Serif 4', 'Noto Serif SC', 'Songti SC', 'SimSun', Georgia, 'Times New Roman', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans CN', sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', Consolas, 'Courier New', monospace;
+
+  /* 栏宽 */
+  --column: 720px;         /* 正文栏宽 */
+  --wide: 1080px;          /* 宽内容 */
+  --max: 1240px;           /* 顶部导航 */
+
+  /* 尺寸 */
+  --header-h: 56px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink-2);
+  background: var(--paper);
+  line-height: 1.6;
+  font-feature-settings: 'kern', 'liga', 'calt';
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.1s ease;
+}
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img { max-width: 100%; display: block; }
+
+/* 容器 */
+.container {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.container-narrow {
+  max-width: var(--column);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 学术标签 - 极小字号 + 全大写 + 字间距 */
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* 1px 硬分隔线 */
+.rule {
+  height: 1px;
+  background: var(--rule);
+  border: none;
+  margin: 0;
+}
+.rule-soft {
+  height: 1px;
+  background: var(--rule-soft);
+  border: none;
+  margin: 0;
+}
+
+/* 元数据 - 小字号 + 灰 */
+.meta {
+  font-size: 12px;
+  color: var(--ink-4);
+  letter-spacing: 0.02em;
+}
+
+/* 通用按钮（仅文字） */
+.btn-text {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+.btn-text:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* 分类 chip - 极简、方角 */
+.chip {
+  display: inline-block;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink-1);
+  color: var(--ink-1);
+  background: transparent;
+  border-radius: 0;
+}
+.chip-outline {
+  border: 1px solid var(--rule-soft);
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+/* 选中状态 */
+::selection {
+  background: var(--accent);
+  color: white;
+}
