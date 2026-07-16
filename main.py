@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
 """workbuddy 专题 - 后端 FastAPI 入口"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
