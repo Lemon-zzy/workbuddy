@@ -1,7 +1,10 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd frontend && npm install --no-audit --no-fund && npm run build",
+  "outputDirectory": "frontend/dist",
   "framework": "vite",
+  "functions": {
+    "api/**/*.py": { "excludeFiles": "**/*" }
+  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "https://workbuddy-api.onrender.com/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
