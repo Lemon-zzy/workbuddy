@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: workbuddy-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: DATABASE_URL
+        value: "sqlite:////data/workbuddy.db"
+      - key: APP_HOST
+        value: 0.0.0.0
+      - key: APP_PORT
+        fromService: { type: web, name: workbuddy-api, property: port }
+      - key: DEBUG
+        value: "false"
+      - key: SYNC_KEYWORD
+        value: "workbuddy"

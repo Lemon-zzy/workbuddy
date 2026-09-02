@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     debug: bool = True
 
     # 数据库（支持 %TEMP% 等环境变量）
-    database_url: str = f"sqlite:///{os.path.join(os.environ.get('TEMP', '.'), 'workbuddy.db')}"
+   database_url: str = "sqlite:////data/workbuddy.db"
 
     # 同步
     sync_keyword: str = "workbuddy"
@@ -28,5 +28,16 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
+    # CORS 白名单（逗号分隔；* 表示全部允许；生产期限定 Vercel 域名）
+    cors_origins: str = "*"
 
+    @property
+    def cors_origins_list(self) -> list[str]:
+        raw = (self.cors_origins or "*").strip()
+        if raw == "*":
+            return ["*"]
+        return [o.strip() for o in raw.split(",") if o.strip()]
+
+    # Render 部署：持久化数据目录（Render 磁盘）
+    data_dir: str = "/data"
 settings = Settings()
